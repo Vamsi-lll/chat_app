@@ -1,9 +1,53 @@
-*{
-    margin: 0%;
-    padding: 0%;
-}
+  *{
+            margin: 0px;
+            padding: 0px;
+        }
 
-body{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    height:100vh;
-}
+        body{
+            background-color: black;
+            height: 100vh;
+        }
+        header{
+            height: 10vh;
+            border-bottom: 1px solid #ffff;
+        }
+        main{
+            display: flex;
+            height: 75vh;
+        }
+        .connected_members{
+            height: 100%;
+            width: 20%;
+            border-right: 1px solid white;
+        }
+        footer{
+            height: 15vh;
+            border-top: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer input{
+            width: 50%;
+            height: 30px;
+            border-radius: 15px;
+            background-color: transparent;
+            border: 1px solid white;
+            color: skyblue;
+            padding: 10px;
+        }
+
+        .btn{
+            height: 30px;
+            width: 70px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* webkit handeling */
+
+        body::-webkit-scrollbar{
+            display: none;
+        }
