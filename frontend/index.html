@@ -8,34 +8,41 @@
 </head>
 <body>
     <!-- for entering the room -->
-     <div class="enter_frame" id="enter_frame">
+    <div class="enter_frame" id="enter_frame">
         <div class="enter_frame_name" id="enter_frame_name">
             <h1>Welcome</h1>
-            <input type="text" placeholder="enter your name" id="user_name">
-            <button onclick="Login()">submit</button>
+            <input type="text" placeholder="Enter your name" id="user_name">
+            <button onclick="Login()" id="login_btn">Submit</button>
         </div>
-     </div>
+    </div>
     <header>
         <div class="user_profile">
             <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="">
             <h2 id="profile_username"></h2>
         </div>
-        <h1>Anonymous Chart</h1>
-        <div class="room_details"></div>
+        <h1>Anonymous Chat</h1>
+        <button class="btn" id="leave_room">Leave Room</button>
     </header>
 
     <!-- main section -->
     <main>
-        <div class="connected_members"></div>
-        <div class="msg_area"></div>
+        <aside class="sidebar">
+            <h2>Participants</h2>
+            <div class="connected_members" id="connected_members"></div>
+        </aside>
+        <section class="chat_section">
+            <div class="msg_area" id="msg_area"></div>
+        </section>
     </main>
     
     <!-- footer section -->
     <footer>
-        <input type="text">
-        <button class="btn">send</button>
+        <input type="text" id="user_msg" placeholder="Type your message...">
+        <button class="btn" id="send">Send</button>
     </footer>
-    <script src="/socket.io/socket.io.js"></script><!-- for connecting the clint side socket -->
+    <!-- Socket.io client for real-time chat -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Main application logic -->
     <script src="script.js"></script>
 </body>
 </html>
