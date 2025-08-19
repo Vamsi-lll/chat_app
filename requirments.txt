@@ -1,0 +1,2 @@
+npm init   // to create the packages manager
+npm install express socket.io   // to install express and scoket
