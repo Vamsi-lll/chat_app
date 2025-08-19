@@ -6,11 +6,54 @@
         body{
             background-color: black;
             height: 100vh;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .enter_frame{
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            position: absolute;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .enter_frame_name{
+            height: auto;
+            width: 300px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
         header{
             height: 10vh;
             border-bottom: 1px solid #ffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+        .user_profile{
+            padding: 10px;
+            display: flex;
+            box-sizing: border-box;
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user_profile img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
         main{
             display: flex;
             height: 75vh;
