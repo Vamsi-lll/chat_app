@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- for entering the room -->
+     <div class="enter_frame" id="enter_frame">
+        <div class="enter_frame_name" id="enter_frame_name">
+            <h1>Welcome</h1>
+            <input type="text" placeholder="enter your name" id="user_name">
+            <button onclick="Login()">submit</button>
+        </div>
+     </div>
     <header>
-        <div class="user_profile"></div>
+        <div class="user_profile">
+            <img src="https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png" alt="">
+            <h2 id="profile_username"></h2>
+        </div>
+        <h1>Anonymous Chart</h1>
+        <div class="room_details"></div>
     </header>
 
     <!-- main section -->
@@ -21,5 +35,7 @@
         <input type="text">
         <button class="btn">send</button>
     </footer>
+    <script src="/socket.io/socket.io.js"></script><!-- for connecting the clint side socket -->
+    <script src="script.js"></script>
 </body>
 </html>
