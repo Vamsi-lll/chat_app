@@ -1,15 +1,43 @@
-const express=require('express') // for creating the server
-const {Server}=require('socket.io') // for websocket connection
-const http=require('http')  // for connecting the express to work with the socket
-const { use } = require('react')
+const express = require('express'); // for creating the server
+const socket = require('socket.io'); // for websocket connection
+const http = require('http'); // for connecting express to socket
 
-const app=express()  // creating an instance for the express 
+const app = express(); // express instance
+const server = http.createServer(app); // http server
+const io = socket(server); // attach socket.io
 
-const server=http.createServer(app)  // connecting the http with express
-const io=new Server(server)   // connecting socket with the server
+// Serve static files from public folder
+app.use(express.static('public'));
 
-app.use(express.static('public'))  // for connecting the front end
+// Store connected users
+let users = {};
 
-server.listen(8080,()=>{     // to running the server
-    console.log('your server is running at:http://localhost:8080')
-})
+io.on('connection', (socket) => {
+    let username = 'Anonymous';
+
+    // Listen for username from client
+    socket.on('set username', (name) => {
+        username = name && name.trim() ? name.trim() : 'Anonymous';
+        users[socket.id] = username;
+        // Notify all clients of new user
+        io.emit('user list', Object.values(users));
+        io.emit('chat message', `${username} joined the chat.`);
+    });
+
+    // Listen for chat messages
+    socket.on('chat message', (msg) => {
+        // Broadcast message with username
+        io.emit('chat message', `${username}: ${msg}`);
+    });
+
+    // Handle user disconnect
+    socket.on('disconnect', () => {
+        io.emit('chat message', `${username} left the chat.`);
+        delete users[socket.id];
+        io.emit('user list', Object.values(users));
+    });
+});
+
+server.listen(8080, () => {
+    console.log('Your server is running at: http://localhost:8080');
+});
