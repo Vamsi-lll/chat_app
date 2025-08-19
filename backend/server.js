@@ -1,22 +1,15 @@
-const express=require('express')   //importing the express to make the server
-const socket=require('socket.io')  // for websocket two way connection
-const http=require('http')         // http module to bind the socket to the url
+const express=require('express') // for creating the server
+const {Server}=require('socket.io') // for websocket connection
+const http=require('http')  // for connecting the express to work with the socket
+const { use } = require('react')
 
-const app=express();  //creating an object for the object
-const server=http.createServer(app) // connecting the server with the socket
-const io= socket(server)  //connect the socket with the server
+const app=express()  // creating an instance for the express 
 
+const server=http.createServer(app)  // connecting the http with express
+const io=new Server(server)   // connecting socket with the server
 
-io.on('connect',()=>{                           // this will give the conformation when someone is connect
-    console.log("cool we got some one in here")
-})
+app.use(express.static('public'))  // for connecting the front end
 
-io.on('disconnect',()=>{                       // this will give the conformation some one leave the app
-    console.log('left the chat.....')
-})
-
-
-
-server.listen(8080,()=>{
-    console.log("your server is running in : http://localhost:8080")   // running the server
+server.listen(8080,()=>{     // to running the server
+    console.log('your server is running at:http://localhost:8080')
 })
